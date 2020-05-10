@@ -32,8 +32,12 @@ module.exports.loop = function () {
             Game.spawns['Spawn1'].pos.x + 1,
             Game.spawns['Spawn1'].pos.y,
             { align: 'left', opacity: 0.8 });
-        console.log('Spawning new ' + spawningCreep.memory.role + ': ' + spawningCreep)
-        console.log('Creep counts:\nbuilders: ' + builder.length + '\nupgraders: ' + upgrader.length + '\nharvesters: ' + harvesters.length + '\n')
+        console.log(
+            'Spawning new ' + spawningCreep.memory.role + ': ' + spawningCreep +
+            '\nCreep counts:\nbuilders: ' + builder.length +
+            '\nupgraders: ' + upgrader.length +
+            '\nharvesters: ' + harvesters.length
+        )
     } else {
         if (harvesters.length < 5) {
             var newName = 'Harvester' + Game.time;
