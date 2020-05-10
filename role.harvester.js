@@ -23,11 +23,11 @@ var roleHarvester = {
                     creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
                     creep.say('Return resources');
                 }
-            }
-            else {
-                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
-                    creep.say('Upgrading');
+                else {
+                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
+                        creep.say('Upgrading');
+                    }
                 }
             }
         }
