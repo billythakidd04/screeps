@@ -33,6 +33,9 @@ module.exports.loop = function () {
     } else {
         let rcl = Game.spawns['Spawn1'].room.controller.level;
         let body = [WORK, CARRY, MOVE]
+        // TODO get room.EnergyAvailable
+        // TODO compare to room.CapacityEnergyAvailable
+        // TODO figure out max body parts per available energy
         if (rcl > 1) {
             body = body.concat([CARRY, WORK])
         }
