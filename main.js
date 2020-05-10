@@ -79,6 +79,11 @@ module.exports.loop = function () {
                 let count = counts[role];
                 counts[role] = ++count;
                 console.log('min counts are now: ' + JSON.stringify(counts));
+                console.log(
+                    'Creep counts:\nbuilders: ' + builder.length +
+                    '\nupgraders: ' + upgrader.length +
+                    '\nharvesters: ' + harvesters.length
+                )
             }
         }
     }
@@ -98,7 +103,7 @@ module.exports.loop = function () {
     }
 
     // loop over mem and clear dead creeps
-    for (var name in Memory.creeps){
+    for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
             delete Memory.creeps[name];
             console.log('Clearing non-existing creep memory:', name);
