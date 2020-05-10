@@ -76,7 +76,7 @@ module.exports.loop = function () {
                 }
             )
             for (var role in global.counts) {
-                let count = counts[role];
+                let count = global.counts[role];
                 global.counts[role] = ++count;
                 console.log('min counts are now: ' + JSON.stringify(counts));
                 console.log(
