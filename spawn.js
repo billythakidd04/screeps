@@ -74,6 +74,9 @@ var spawnController = {
             //     }
             // }
         }
+    },
+    checkEnergyLevels: function (spawnLocation) {
+        // TODO
     }
 }
 
