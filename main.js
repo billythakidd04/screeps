@@ -2,7 +2,7 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 
-Global.counts = {
+global.counts = {
     "builder": 2,
     "upgrader": 2,
     "harvester": 5,
@@ -77,7 +77,7 @@ module.exports.loop = function () {
             )
             for (var role in Global.counts) {
                 let count = counts[role];
-                Global.counts[role] = ++count;
+                global.counts[role] = ++count;
                 console.log('min counts are now: ' + JSON.stringify(counts));
                 console.log(
                     'Creep counts:\nbuilders: ' + builder.length +
