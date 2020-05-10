@@ -34,7 +34,7 @@ module.exports.loop = function () {
         let rcl = Game.spawns['Spawn1'].room.controller.level;
         let body = [WORK, CARRY, MOVE]
         if (rcl > 1) {
-            body = body.concat([CARRY, MOVE])
+            body = body.concat([CARRY, WORK])
         }
         if (harvesters.length < Memory.counts["harvester"]) {
             var newName = 'Harvester' + Game.time;
