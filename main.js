@@ -25,6 +25,7 @@ module.exports.loop = function () {
 
     // console.log("There are:\n"+builder.length+" builders\n"+upgrader.length+" upgraders\n"+harvesters.length+" harvesters\n")
 
+    // if we're currently spawning announce the deets
     if (Game.spawns['Spawn1'].spawning) {
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
         Game.spawns['Spawn1'].room.visual.text(
@@ -38,6 +39,7 @@ module.exports.loop = function () {
             '\nupgraders: ' + upgrader.length +
             '\nharvesters: ' + harvesters.length
         )
+        // otherwise add a new creep to the queue
     } else {
         if (harvesters.length < 5) {
             var newName = 'Harvester' + Game.time;
@@ -55,8 +57,20 @@ module.exports.loop = function () {
             Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
                 { memory: { role: 'upgrader' } });
         }
+        // if all basic roles are full lets add some "upgraded" creeps
+        else {
+            var newName = 'bigHarvester' + Game.time;
+            Game.spawns['Spawn1'].spawnCreep(
+                [WORK, WORK, WORK, CARRY, MOVE, MOVE],
+                newName,
+                {
+                    memory: {
+                        role: 'harvester'
+                    }
+                }
+            )
+        }
     }
-
 
     for (var name in Game.creeps) {
         var creep = Game.creeps[name];
