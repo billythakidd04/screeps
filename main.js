@@ -76,7 +76,7 @@ module.exports.loop = function () {
                 }
             )
             for (var role in counts) {
-                count = counts[role];
+                let count = counts[role];
                 counts[role] = count++;
             }
         }
