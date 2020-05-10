@@ -11,27 +11,9 @@ if (Memory.count == 'undefined') {
 }
 
 module.exports.loop = function () {
-
-    var tower = Game.getObjectById('b2c1e1f69e121579b06638e1');
-    if (tower) {
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
-        if (closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
-
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if (closestHostile) {
-            tower.attack(closestHostile);
-        }
-    }
-
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var builder = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-
-    // console.log("There are:\n"+builder.length+" builders\n"+upgrader.length+" upgraders\n"+harvesters.length+" harvesters\n")
 
     // if we're currently spawning announce the deets
     if (Game.spawns['Spawn1'].spawning) {
@@ -49,15 +31,20 @@ module.exports.loop = function () {
         )
         // otherwise add a new creep to the queue
     } else {
+        let rcl = Game.spawns['Spawn1'].room.controller.level;
+        let body = [WORK, CARRY, MOVE]
+        if (rcl > 1) {
+            body = body.concat([CARRY, MOVE])
+        }
         if (harvesters.length < Memory.counts["harvester"]) {
             var newName = 'Harvester' + Game.time;
             // console.log('Spawning new harvester: ' + newName);
-            Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
+            Game.spawns['Spawn1'].spawnCreep(body, newName,
                 { memory: { role: 'harvester' } });
         } else if (builder.length < Memory.counts["builder"]) {
             var newName = 'builder' + Game.time;
             // console.log('Spawning new builder: ' + newName);
-            Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
+            Game.spawns['Spawn1'].spawnCreep(body, newName,
                 { memory: { role: 'builder' } });
         } else if (upgrader.length < Memory.counts["upgrader"]) {
             var newName = 'upgrader' + Game.time;
