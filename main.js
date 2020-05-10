@@ -2,10 +2,12 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 
-global.counts = {
-    "builder": 2,
-    "upgrader": 2,
-    "harvester": 5,
+if (Memory.count == 'undefined') {
+    Memory.counts = {
+        "builder": 20,
+        "upgrader": 20,
+        "harvester": 50,
+    };
 }
 
 module.exports.loop = function () {
@@ -47,17 +49,17 @@ module.exports.loop = function () {
         )
         // otherwise add a new creep to the queue
     } else {
-        if (harvesters.length < counts["harvester"]) {
+        if (harvesters.length < Memory.counts["harvester"]) {
             var newName = 'Harvester' + Game.time;
             // console.log('Spawning new harvester: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
                 { memory: { role: 'harvester' } });
-        } else if (builder.length < counts["builder"]) {
+        } else if (builder.length < Memory.counts["builder"]) {
             var newName = 'builder' + Game.time;
             // console.log('Spawning new builder: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
                 { memory: { role: 'builder' } });
-        } else if (upgrader.length < counts["upgrader"]) {
+        } else if (upgrader.length < Memory.counts["upgrader"]) {
             var newName = 'upgrader' + Game.time;
             // console.log('Spawning new upgrader: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
@@ -75,10 +77,10 @@ module.exports.loop = function () {
                     }
                 }
             )
-            for (var role in global.counts) {
-                let count = global.counts[role];
-                global.counts[role] = ++count;
-                console.log('min counts are now: ' + JSON.stringify(counts));
+            for (var role in Memory.counts) {
+                let count = Memory.counts[role];
+                Memory.counts[role] = ++count;
+                console.log('min counts are now: ' + JSON.stringify(Memory.counts));
                 console.log(
                     'Creep counts:\nbuilders: ' + builder.length +
                     '\nupgraders: ' + upgrader.length +
