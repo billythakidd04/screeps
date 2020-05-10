@@ -78,7 +78,7 @@ module.exports.loop = function () {
             for (var role in counts) {
                 let count = counts[role];
                 counts[role] = count++;
-                console.log('min counts are now: ' + counts);
+                console.log('min counts are now: ' + JSON.stringify(counts));
             }
         }
     }
