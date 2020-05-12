@@ -23,7 +23,7 @@ var spawnController = {
         let creeps = _.filter(Game.creeps, (creep) => creep.memory.role == role);
         return creeps.length;
     },
-    spawnRole: function (spawnLocation) {
+    spawnCreeps: function (spawnLocation) {
         let currentSpawn = Game.spawns[spawnLocation]
         // if we're currently spawning announce the deets
         if (currentSpawn.spawning) {
