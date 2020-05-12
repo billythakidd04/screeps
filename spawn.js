@@ -1,16 +1,16 @@
 // spawning logic
-roles = [
+var roles = [
     "harvester",
     "builder",
     "upgrader",
     "soldier",
-]
+];
 
 global.counts = {
     "builder": 2,
     "upgrader": 2,
     "harvester": 5,
-}
+};
 
 var spawnController = {
     getRoleMinimums: function (role) {
@@ -78,6 +78,6 @@ var spawnController = {
     checkEnergyLevels: function (spawnLocation) {
         // TODO
     }
-}
+};
 
 module.exports = spawnController;
