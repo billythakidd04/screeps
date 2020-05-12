@@ -11,7 +11,6 @@ build walls
 create soldiers
 */
 
-
 var tower = Game.getObjectById('b2c1e1f69e121579b06638e1');
 if (tower) {
     var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
