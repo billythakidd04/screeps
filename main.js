@@ -1,7 +1,7 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
-var spawner = require('spawnController');
+var spawner = require('spawn');
 
 module.exports.loop = function () {
     // delegate work
