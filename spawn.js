@@ -19,7 +19,7 @@ var spawnController = {
         }
         return 0;
     },
-    getRoleCounts = function (role) {
+    getRoleCounts: function (role) {
         let creeps = _.filter(Game.creeps, (creep) => creep.memory.role == role);
         return creeps.length;
     },
