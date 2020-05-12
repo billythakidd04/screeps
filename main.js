@@ -19,7 +19,7 @@ module.exports.loop = function () {
         }
     }
     // replenish the troops
-    spawner.spawnRole(Game.spawns['Spawn1'])
+    spawner.spawnCreeps(Game.spawns['Spawn1'])
     // loop over mem and clear dead creeps
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
