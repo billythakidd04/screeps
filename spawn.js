@@ -80,4 +80,4 @@ var spawnController = {
     }
 }
 
-module.exports = spawnController
+module.exports = spawnController;
